@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { Conference } from '../../models/conference';
 import { CommonModule } from '@angular/common';
 
@@ -9,6 +9,12 @@ import { CommonModule } from '@angular/common';
   styleUrl: './conference-list.css',
 })
 export class ConferenceList {
+  x=signal(1)
+  constractor(){
+    this.x.set(2)
+    console.log(this.x())
+  }
+  
   searchItem="conf"
 title:string ="List de conferences"
 favoriteListe : Conference[]=[]
