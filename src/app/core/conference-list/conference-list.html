@@ -1,0 +1,32 @@
+<h1>{{title}}</h1>
+<div>
+     <input type="text" placeholder="taper titre"  [(ngModel)]="searchItem" > {{searchItem}}
+ </div>
+<div class="container" style="display: flex;flex-wrap: wrap;gap: 20px;">
+    
+<input type="text" placeholder="taper le titre">
+    @for(conf of search() ;track conf.id){
+        @if (conf.nbPlaces>0)
+        { <div class="card" style="width: 18rem;">
+
+  <img src="{{conf.imageUrl}}" class="card-img-top" alt="conf image">
+  <div class="card-body">
+    <h5 class="card-title">{{conf.titre | uppercase}}</h5>
+    <p class="card-text">{{conf.category}}</p>
+    <p>{{conf.date | date:'dd-MM-yyyy'}}</p>
+    <a href="#" class="btn btn-primary" (click)="addToFavorite(conf)">add to favourite</a>
+  </div>
+</div>}
+       
+    } @empty {<h2>aucune conf dispo pour le moment</h2>}
+    
+</div>
+
+<div>
+<ul>
+    @for (fconf of favoriteListe; track fconf.id ){
+        <li> {{fconf.titre}}</li>
+    }
+
+</ul>
+</div>
